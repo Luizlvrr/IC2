@@ -1,0 +1,15 @@
+def ler_diagonal_principal():
+	matriz = [[0 for _ in range(5)] for _ in range(6)]
+	for i in range(5):
+		elemento = int(input())
+		matriz[i][i] = elemento
+	return matriz
+
+def exibir_matriz(matriz):
+	print(matriz)
+
+def main():
+	diagonal_principal = ler_diagonal_principal()
+	exibir_matriz(diagonal_principal)
+if __name__ == "__main__":
+	main()

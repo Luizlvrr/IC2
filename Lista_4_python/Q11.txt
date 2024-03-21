@@ -1,0 +1,11 @@
+def produto_escalar_matriz_vetor(matriz, vetor):
+    resultado = [0 for _ in range(len(matriz[0]))]
+    for i in range(len(matriz[0])):
+        for j in range(len(vetor)):
+            resultado[i] += matriz[j][i] * vetor[j]
+    return resultado
+
+matriz = eval(input())
+vetor = eval(input())
+resultado = produto_escalar_matriz_vetor(matriz, vetor)
+print(resultado)

@@ -1,0 +1,18 @@
+def criar_matriz(linhas, colunas):
+	return [[0 for _ in range(colunas)] for _ in range(linhas)]
+
+def preencher_matriz_por_colunas(matriz):
+	linhas = len(matriz)
+	colunas = len(matriz[0])
+	for coluna in range(colunas):
+		for linha in range(linhas):
+			elemento = int(input())
+			matriz[linha][coluna] = elemento
+
+def imprimir_matriz(matriz):
+	print(matriz)
+linhas = 5
+colunas = 6
+matriz = criar_matriz(linhas, colunas)
+preencher_matriz_por_colunas(matriz)
+imprimir_matriz(matriz)

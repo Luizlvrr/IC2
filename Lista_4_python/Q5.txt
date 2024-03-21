@@ -1,0 +1,48 @@
+def numero_por_extenso(numero):
+    unidades = ['', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove']
+    especiais = ['', 'onze', 'doze', 'treze', 'catorze', 'quinze', 'dezesseis', 'dezessete', 'dezoito', 'dezenove']
+    dezenas = ['', 'dez', 'vinte', 'trinta', 'quarenta', 'cinquenta', 'sessenta', 'setenta', 'oitenta', 'noventa']
+    centenas = ['', 'cento', 'duzentos', 'trezentos', 'quatrocentos', 'quinhentos', 'seiscentos', 'setecentos', 'oitocentos', 'novecentos']
+
+    extenso = ''
+
+    if numero == 0:
+        return 'zero'
+
+    if numero // 1000 > 0:
+        if numero // 1000 == 1:  
+            extenso += 'mil'
+        else:
+            extenso += unidades[numero // 1000] + ' mil'
+        numero %= 1000
+
+    if numero // 100 > 0:
+        if extenso:  
+            extenso += ' e'
+        extenso += ' ' + centenas[numero // 100]
+        numero %= 100
+    
+    if 10 < numero < 20 or numero % 10 == 0:
+        if extenso:  
+            extenso += ' e'
+        extenso += ' ' + especiais[numero % 10]
+    else:
+        if numero // 10 > 0:
+            if extenso:  
+                extenso += ' e'
+            extenso += ' ' + dezenas[numero // 10]
+            numero %= 10
+        
+        if numero > 0:
+            if extenso:  
+                extenso += ' e'
+            extenso += ' ' + unidades[numero]
+    
+    return extenso
+
+numero = int(input())
+
+if 0 <= numero <= 10000:
+    print(numero_por_extenso(numero))
+else:
+    print("Número fora do intervalo permitido.")

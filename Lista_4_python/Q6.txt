@@ -1,0 +1,45 @@
+def ler_matriz():
+    try:
+        matriz = eval(input())
+        if not isinstance(matriz, list) or not matriz:
+            raise ValueError("Entrada inválida. Forneça uma lista de listas não vazia.")
+        linhas = len(matriz)
+        colunas = len(matriz[0])
+        if any(len(linha) != colunas for linha in matriz):
+            raise ValueError("As linhas da matriz devem ter o mesmo número de elementos.")
+        return matriz, linhas, colunas
+    except Exception as e:
+        print("Erro ao ler matriz:", e)
+        return None, None, None
+
+def multiplicar_matrizes(matriz_a, matriz_b):
+    linhas_a, colunas_a = len(matriz_a), len(matriz_a[0])
+    linhas_b, colunas_b = len(matriz_b), len(matriz_b[0])
+
+    if colunas_a != linhas_b:
+        print("As dimensões das matrizes não são compatíveis para multiplicação.")
+        return None
+
+    resultado = [[0] * colunas_b for _ in range(linhas_a)]
+
+    for i in range(linhas_a):
+        for j in range(colunas_b):
+            for k in range(colunas_a):
+                resultado[i][j] += matriz_a[i][k] * matriz_b[k][j]
+
+    return resultado
+
+print()
+matriz_a, linhas_a, colunas_a = ler_matriz()
+
+print()
+matriz_b, linhas_b, colunas_b = ler_matriz()
+
+if linhas_a is not None and colunas_a is not None and linhas_b is not None and colunas_b is not None:
+    if colunas_a == linhas_b:
+        resultado = multiplicar_matrizes(matriz_a, matriz_b)
+        if resultado:
+            print()
+            print(resultado)
+    else:
+        print("As matrizes fornecidas não têm dimensões compatíveis para multiplicação.")

@@ -1,0 +1,39 @@
+def read_matrix():
+    matrix_str = input()
+    try:
+        matrix = eval(matrix_str)
+        if not isinstance(matrix, list):
+            raise ValueError("Entrada inválida. Forneça uma lista de listas.")
+        if not matrix or not all(isinstance(row, list) for row in matrix):
+            raise ValueError("Entrada inválida. Forneça uma lista de listas não vazia.")
+        cols = len(matrix[0])
+        if not all(len(row) == cols for row in matrix):
+            raise ValueError("Entrada inválida. As linhas da matriz devem ter o mesmo número de elementos.")
+        return matrix
+    except Exception as e:
+        print("Erro ao ler a matriz:", e)
+        return None
+
+def add_matrices(matrix1, matrix2):
+    if len(matrix1) != len(matrix2) or len(matrix1[0]) != len(matrix2[0]):
+        print("As matrizes têm dimensões diferentes e não podem ser somadas.")
+        return None
+    result = []
+    for i in range(len(matrix1)):
+        row = []
+        for j in range(len(matrix1[0])):
+            row.append(matrix1[i][j] * matrix2[i][j])
+        result.append(row)
+    return result
+
+print()
+matrix1 = read_matrix()
+
+print()
+matrix2 = read_matrix()
+
+if matrix1 and matrix2:
+    result = add_matrices(matrix1, matrix2)
+    if result:
+        print()
+        print(result)

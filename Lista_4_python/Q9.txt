@@ -1,0 +1,5 @@
+M = [[0 for _ in range(5)] for _ in range(6)] 
+for i in range(6):  
+    for j in range(5):  
+        M[i][j] = int(input( ))  
+print(M)

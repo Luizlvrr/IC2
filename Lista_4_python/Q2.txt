@@ -1,0 +1,17 @@
+def ler_matriz_quadrada():
+    ordem = int(input())
+    matriz = []
+    for i in range(ordem):
+        linha = []
+        for j in range(ordem):
+            elemento = int(input())
+            linha.append(elemento)
+        matriz.append(linha)
+    return matriz
+
+def imprimir_diagonal_secundaria(matriz):
+    for i in range(len(matriz)):
+        print(matriz[i][len(matriz)-i-1])
+
+matriz = ler_matriz_quadrada()
+imprimir_diagonal_secundaria(matriz)

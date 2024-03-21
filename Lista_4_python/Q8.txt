@@ -1,0 +1,21 @@
+def contar_ocorrencias(notas, frequencias, carga_horaria):
+    frequencia_minima = 0.75 * carga_horaria
+    aprovados = 0
+    reprovados_por_nota = 0
+    reprovados_por_frequencia = 0
+    
+    for nota, frequencia in zip(notas, frequencias):
+        if frequencia < frequencia_minima:
+            reprovados_por_frequencia += 1
+        elif nota >= 5.0:
+            aprovados += 1
+        else:
+            reprovados_por_nota += 1
+    
+    return [aprovados, reprovados_por_nota, reprovados_por_frequencia]
+
+notas = eval(input())
+frequencias = eval(input())
+carga_horaria = int(input())
+resultado = contar_ocorrencias(notas, frequencias, carga_horaria)
+print(resultado)
